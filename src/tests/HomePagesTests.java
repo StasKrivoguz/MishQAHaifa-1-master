@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.EventsUnAutPageHelper;
 import pages.HomePageHelper;
 
 import java.util.List;
@@ -19,38 +20,29 @@ import java.util.List;
  */
 public class HomePagesTests extends TestBase{
     HomePageHelper homePage;
+    EventsUnAutPageHelper eventsUnAutPage;
 
     @BeforeMethod
     public void initPage(){
         homePage = PageFactory.initElements(driver,HomePageHelper.class);
+        eventsUnAutPage = PageFactory.initElements(driver,EventsUnAutPageHelper.class);
     }
 
     @Test
     public void openHomePage() throws InterruptedException {
         homePage.waitUntilPageLoad();
-        //Thread.sleep(20000);
+        String goToButtonName = homePage.getGoToEventButtonName();
 
-        WebElement goToEventsButton = driver.findElement(
-                By.className("mat-stroked-button"));
-        //System.out.println("Text of button: "
-        // + goToEventsButton.getText());
-        //Thread.sleep(5000);
-        Assert.assertTrue(goToEventsButton.getText()
-                .equals("Go to Event list"));
+        Assert.assertEquals("Go to Event List",goToButtonName);
     }
     @Test
     public void goToEventsTest() throws InterruptedException {
-        //Thread.sleep(10000);
-        waitUntilElementIsLoaded(driver,
-                By.xpath("//span[contains(text(),'Login')]"),
-                45);
-        WebElement goToEventsButton = driver.findElement(
-                By.className("mat-stroked-button"));
-        goToEventsButton.click();
-        waitUntilElementIsLoaded(driver,By.xpath("//span[contains(text(),'Filters')]"),20);
-        WebElement titlePage = driver.findElement(By
-                .xpath("//h1[@class='gorisontal-center']"));
-        Assert.assertTrue(titlePage.getText().equals("Find event"));
-    }
 
+        homePage.waitUntilPageLoad();
+        homePage.pressGoToEventButton();
+        eventsUnAutPage.waitUntilPageLoad();
+        String header = eventsUnAutPage.getHeader();
+
+        Assert.assertEquals("Find event",header);
+    }
 }

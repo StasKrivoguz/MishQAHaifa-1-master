@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class HomePagesTests extends TestBase{
     HomePageHelper homePage;
-    
+
     @BeforeMethod
     public void initPage(){
         homePage = PageFactory.initElements(driver,HomePageHelper.class);
@@ -27,10 +27,9 @@ public class HomePagesTests extends TestBase{
 
     @Test
     public void openHomePage() throws InterruptedException {
+        homePage.waitUntilPageLoad();
         //Thread.sleep(20000);
-        waitUntilElementIsLoaded(driver,
-                By.xpath("//span[contains(text(),'Login')]"),
-                45);
+
         WebElement goToEventsButton = driver.findElement(
                 By.className("mat-stroked-button"));
         //System.out.println("Text of button: "

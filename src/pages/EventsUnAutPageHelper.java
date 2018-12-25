@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class EventsUnAutPageHelper extends PageBase{
-    WebDriver driver;
+
     public EventsUnAutPageHelper(WebDriver driver){
         super(driver);
     }

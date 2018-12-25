@@ -33,7 +33,7 @@ public class HomePagesTests extends TestBase{
         homePage.waitUntilPageLoad();
         String goToButtonName = homePage.getGoToEventButtonName();
 
-        Assert.assertEquals("Go to Event List",goToButtonName);
+        Assert.assertEquals("Go to Event list",goToButtonName);
     }
     @Test
     public void goToEventsTest() throws InterruptedException {

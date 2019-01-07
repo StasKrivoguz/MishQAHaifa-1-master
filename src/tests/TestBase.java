@@ -32,7 +32,7 @@ public class TestBase {
         return sb.toString();
     }
 
-   /* public static String latinDigitString(int length){
+   public static String latinDigitString(int length){
         String str = "";
         char ch;
         int number;
@@ -46,10 +46,10 @@ public class TestBase {
             }
         }while(str.length()<length);
         return str;
-    }*/
+    }
 
 
-    @AfterSuite
+    /*@AfterSuite
     public void tearDown(){
         driver.quit();
     }
@@ -62,5 +62,5 @@ public class TestBase {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
